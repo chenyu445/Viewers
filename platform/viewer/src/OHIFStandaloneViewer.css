@@ -11,6 +11,7 @@ body,
   -moz-osx-font-smoothing: grayscale;
   font-family: Roboto, OpenSans, HelveticaNeue-Light, Helvetica Neue Light,
     Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+  overflow: hidden;
 }
 
 body {

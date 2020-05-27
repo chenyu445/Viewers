@@ -30,10 +30,10 @@ const paletteColorCache = {
   count: 0,
   maxAge: 24 * 60 * 60 * 1000, // 24h cache?
   entries: {},
-  isValidUID: function(paletteUID) {
+  isValidUID: function (paletteUID) {
     return typeof paletteUID === 'string' && paletteUID.length > 0;
   },
-  get: function(paletteUID) {
+  get: function (paletteUID) {
     let entry = null;
     if (this.entries.hasOwnProperty(paletteUID)) {
       entry = this.entries[paletteUID];
@@ -47,7 +47,7 @@ const paletteColorCache = {
     }
     return entry;
   },
-  add: function(entry) {
+  add: function (entry) {
     if (this.isValidUID(entry.uid)) {
       let paletteUID = entry.uid;
       if (this.entries.hasOwnProperty(paletteUID) !== true) {
@@ -96,7 +96,7 @@ function buildInstanceWadoRsUri(
 ) {
   return `${
     server.wadoRoot
-  }/studies/${studyInstanceUid}/series/${seriesInstanceUid}/instances/${sopInstanceUid}`;
+    }/studies/${studyInstanceUid}/series/${seriesInstanceUid}/instances/${sopInstanceUid}`;
 }
 
 function buildInstanceFrameWadoRsUri(
@@ -314,7 +314,7 @@ async function resultDataToStudyMetadata(server, studyInstanceUid, resultData) {
   const seriesMap = {};
 
   await Promise.all(
-    resultData.map(async function(instance) {
+    resultData.map(async function (instance) {
       const seriesInstanceUid = DICOMWeb.getString(instance['0020000E']);
       let series = seriesMap[seriesInstanceUid];
 
@@ -400,10 +400,12 @@ async function resultDataToStudyMetadata(server, studyInstanceUid, resultData) {
         contrastBolusAgent: DICOMWeb.getString(instance['00180010']),
         radiopharmaceuticalInfo: getRadiopharmaceuticalInfo(instance),
         baseWadoRsUri: baseWadoRsUri,
-        wadouri: WADOProxy.convertURL(wadouri, server),
+        // wadouri: WADOProxy.convertURL(wadouri, server),
+        wadouri: DICOMWeb.getString(instance['0009FFFF']) ? DICOMWeb.getString(instance['0009FFFF']) : WADOProxy.convertURL(wadouri, server),
         wadorsuri: WADOProxy.convertURL(wadorsuri, server),
         imageRendering: server.imageRendering,
         thumbnailRendering: server.thumbnailRendering,
+        realPath: DICOMWeb.getString(instance['0009FFFF']),
       };
 
       // Get additional information if the instance uses "PALETTE COLOR" photometric interpretation

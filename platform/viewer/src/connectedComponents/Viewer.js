@@ -228,18 +228,6 @@ class Viewer extends Component {
 
     return (
       <>
-        {/* HEADER */}
-        <WhiteLabellingContext.Consumer>
-          {whiteLabelling => (
-            <UserManagerContext.Consumer>
-              {userManager => (
-                <ConnectedHeader home={false} userManager={userManager}>
-                  {whiteLabelling.logoComponent}
-                </ConnectedHeader>
-              )}
-            </UserManagerContext.Consumer>
-          )}
-        </WhiteLabellingContext.Consumer>
 
         {/* TOOLBAR */}
         <ConnectedToolbarRow
@@ -284,16 +272,16 @@ class Viewer extends Component {
         {/* VIEWPORTS + SIDEPANELS */}
         <div className="FlexboxLayout">
           {/* LEFT */}
-          <SidePanel from="left" isOpen={this.state.isLeftSidePanelOpen}>
+          {/* <SidePanel from="left" isOpen={this.state.isLeftSidePanelOpen}>
             {VisiblePanelLeft ? (
               <VisiblePanelLeft
                 viewports={this.props.viewports}
                 activeIndex={this.props.activeViewportIndex}
               />
             ) : (
-              <ConnectedStudyBrowser studies={this.state.thumbnails} />
-            )}
-          </SidePanel>
+                <ConnectedStudyBrowser studies={this.state.thumbnails} />
+              )}
+          </SidePanel> */}
 
           {/* MAIN */}
           <div className={classNames('main-content')}>
@@ -310,6 +298,7 @@ class Viewer extends Component {
             )}
           </SidePanel>
         </div>
+        <ConnectedStudyBrowser studies={this.state.thumbnails} />
         <ConnectedLabellingOverlay />
       </>
     );
@@ -329,7 +318,7 @@ export default Viewer;
  * @param {Study[]} studies
  * @param {DisplaySet[]} studies[].displaySets
  */
-const _mapStudiesToThumbnails = function(studies) {
+const _mapStudiesToThumbnails = function (studies) {
   return studies.map(study => {
     const { studyInstanceUid } = study;
 

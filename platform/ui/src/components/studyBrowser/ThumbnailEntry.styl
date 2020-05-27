@@ -2,28 +2,29 @@
 
 :root {
   --series-count-background-color: #678696;
+  --image-thumbnai-height: 100px;
 }
 
 .ThumbnailEntry
   cursor: pointer
-  display: table
+  float: left
 
   .p-x-1
     padding: 0 1rem
 
   .alt-image-text
-    align-items: center;
+    // align-items: center;
     justify-content: center;
     background-color: var(--primary-background-color);
     box-shadow: inset 0 0 0 1px var(--ui-border-color-dark);
     border: 5px solid transparent;
     border-radius: 12px;
-    height: 135px;
+    height: var(--image-thumbnai-height);
     margin: 0 auto;
     padding: 5px;
     position: relative;
     transition: var(--sidebar-transition);
-    width: 217px;
+    width: var(--image-thumbnai-height);
     display: flex;
 
     h1

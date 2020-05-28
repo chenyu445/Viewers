@@ -1,14 +1,13 @@
 .StudyBrowser
   float: left
-  height: 100%
+  height: var(--study-browser-height);
   width: 100%
   overflow: hidden
   background-color: black
-  padding-bottom: 20px
   padding-top: 10px
 
   .scrollable-study-thumbnails
-    height: 100px
+    height: 130px
     overflow-y: hidden
     overflow-x: auto
     // padding-bottom: 50px
@@ -16,7 +15,16 @@
     padding-left: 4px
     margin-right: -16px
     white-space:nowrap
-
+    // position: relative;
+    &:before{
+      content:'请按住底部左右滑动';
+      color: #fff;
+      position: absolute;
+      bottom: 10px;
+      left :0;
+      width:100%;
+      text-align: center;
+    }
     // &::-webkit-scrollbar
     //   display: none
 

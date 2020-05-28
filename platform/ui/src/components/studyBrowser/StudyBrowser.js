@@ -22,9 +22,9 @@ class StudyBrowser extends Component {
 
     const thumbnails = studies.map((study, studyIndex) => {
       return study.thumbnails.map((thumb, thumbIndex) => {
-        return (
-          <div className="ThumbnailEntryContainer">
-            <ThumbnailEntry
+        if (this.props.supportsDragAndDrop) {
+          return (
+            <ThumbnailEntryDragSource
               key={`${studyIndex}_${thumbIndex}`}
               {...study}
               {...thumb}
@@ -32,8 +32,21 @@ class StudyBrowser extends Component {
               onClick={this.props.onThumbnailClick}
               onDoubleClick={this.props.onThumbnailDoubleClick}
             />
-          </div>
-        );
+          );
+        } else {
+          return (
+            <div className="ThumbnailEntryContainer">
+              <ThumbnailEntry
+                key={`${studyIndex}_${thumbIndex}`}
+                {...study}
+                {...thumb}
+                id={`${studyIndex}_${thumbIndex}`}
+                onClick={this.props.onThumbnailClick}
+                onDoubleClick={this.props.onThumbnailDoubleClick}
+              />
+            </div>
+          );
+        }
       });
     });
 

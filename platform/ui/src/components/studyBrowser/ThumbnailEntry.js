@@ -68,7 +68,7 @@ class ThumbnailEntry extends Component {
         onMouseDown={this.onMouseDown}
       >
         {contents}
-        <div
+        {/* <div
           className={infoOnly ? 'series-details info-only' : 'series-details'}
         >
           <div className="series-description">
@@ -92,7 +92,7 @@ class ThumbnailEntry extends Component {
               <div className="value">{this.props.numImageFrames}</div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }

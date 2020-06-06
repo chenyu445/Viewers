@@ -8,7 +8,8 @@
   --right-sidepanel-menu-width: 323px;
   --study-list-padding: 8%;
   --study-list-padding-medium-screen: 10px;
-  --study-browser-height: 150px;
+  --study-browser-item-height: 60px;
+  --study-browser-height: 80px;
 }
 
 /* Fonts */

@@ -31,6 +31,7 @@ class ToolbarRow extends Component {
     super(props);
 
     const toolbarButtonDefinitions = _getVisibleToolbarButtons.call(this);
+    console.log('toolbarButtonDefinitions', toolbarButtonDefinitions)
     // TODO:
     // If it's a tool that can be active... Mark it as active?
     // - Tools that are on/off?
@@ -41,7 +42,7 @@ class ToolbarRow extends Component {
     // Why ToolbarRow instead of just Toolbar? Do we have any others?
     this.state = {
       toolbarButtons: toolbarButtonDefinitions,
-      activeButtons: [],
+      activeButtons: ['StackScroll'],
       isCineDialogOpen: false,
     };
 
@@ -97,6 +98,7 @@ class ToolbarRow extends Component {
   }
 
   render() {
+    console.log('toolbarButtonDefinitions 2', this.state)
     const buttonComponents = _getButtonComponents.call(
       this,
       this.state.toolbarButtons,

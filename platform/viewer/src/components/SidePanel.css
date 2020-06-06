@@ -5,7 +5,7 @@
   align-items: stretch;
   height: calc(
     100% - var(--toolbar-height) - var(--top-bar-height) -
-      var(--study-browser-height)
+      var(--study-browser-item-height)
   );
   width: 100%;
   overflow: hidden;

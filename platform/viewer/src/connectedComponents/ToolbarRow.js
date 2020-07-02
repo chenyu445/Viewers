@@ -31,7 +31,6 @@ class ToolbarRow extends Component {
     super(props);
 
     const toolbarButtonDefinitions = _getVisibleToolbarButtons.call(this);
-    console.log('toolbarButtonDefinitions', toolbarButtonDefinitions)
     // TODO:
     // If it's a tool that can be active... Mark it as active?
     // - Tools that are on/off?

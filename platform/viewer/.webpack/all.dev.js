@@ -63,6 +63,15 @@ module.exports = (env, argv) => {
       historyApiFallback: {
         disableDotRule: true,
       },
+      proxy: {
+        '/dcm4chee-arc': {
+          target: 'https://jindu.hi-lead.com',
+          changeOrigin: true,
+          secure: false,
+          // pathRewrite: { '/dcm4chee-arc': '' }
+        }
+
+      }
     },
   });
 };
